@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://viump1xripb4"]
+
+[ext_resource type="Theme" uid="uid://dc3d7au27w1u5" path="res://theme/main_theme.tres" id="1_3ex24"]
+[ext_resource type="Script" path="res://src/menu/start/start.gd" id="1_4seud"]
+[ext_resource type="FontFile" uid="uid://b83t7pojv8f5p" path="res://fonts/SUSE-Regular.ttf" id="1_l6xt0"]
+[ext_resource type="Texture2D" uid="uid://bepcsice7vruk" path="res://textures/icons8-add-48.png" id="2_ggyy2"]
+[ext_resource type="Texture2D" uid="uid://c40jvqltc5h0a" path="res://textures/icons8-remove-48.png" id="3_okhdc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdv85"]
+bg_color = Color(0, 0, 0, 0.176471)
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4seud")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 1220.0
+offset_bottom = 65.0
+theme = ExtResource("1_3ex24")
+text = "Projects:"
+vertical_alignment = 1
+
+[node name="ProjectsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.092
+anchor_right = 0.953
+anchor_bottom = 0.786
+offset_left = -0.160004
+offset_top = -0.240005
+offset_right = 0.159912
+offset_bottom = 0.0800171
+mouse_filter = 2
+theme = ExtResource("1_3ex24")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ProjectsPanel"]
+custom_minimum_size = Vector2(1150, 490)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -245.0
+offset_right = 575.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProjectsPanel/ScrollContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="ButtonPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 582.0
+offset_right = 1220.0
+offset_bottom = 657.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdv85")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="AddProject" type="Button" parent="ButtonPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_3ex24")
+theme_override_fonts/font = ExtResource("1_l6xt0")
+theme_override_font_sizes/font_size = 45
+text = "Add Project"
+icon = ExtResource("2_ggyy2")
+
+[node name="DeleteProject" type="Button" parent="ButtonPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_3ex24")
+theme_override_fonts/font = ExtResource("1_l6xt0")
+theme_override_font_sizes/font_size = 45
+text = "Delete Project"
+icon = ExtResource("3_okhdc")
+
+[node name="DeletingConfirmation" type="ConfirmationDialog" parent="."]
+title = "Deleting project(s)"
+initial_position = 1
+unresizable = true
+ok_button_text = "Yes"
+dialog_text = "Are YOU sure?"
+cancel_button_text = "No"
+
+[connection signal="pressed" from="ButtonPanel/HBoxContainer/AddProject" to="." method="_on_add_projects_pressed"]
+[connection signal="pressed" from="ButtonPanel/HBoxContainer/DeleteProject" to="." method="_on_delete_project_pressed"]
+[connection signal="confirmed" from="DeletingConfirmation" to="." method="_on_deleting_confirmation"]

@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2slj5ky3jht"]
+
+[ext_resource type="Script" path="res://src/menu/task_manager/task_manager.gd" id="1_256ql"]
+[ext_resource type="Theme" uid="uid://dc3d7au27w1u5" path="res://theme/main_theme.tres" id="1_pxfcu"]
+[ext_resource type="FontFile" uid="uid://b83t7pojv8f5p" path="res://fonts/SUSE-Regular.ttf" id="2_1d0aw"]
+[ext_resource type="Texture2D" uid="uid://d0h22imw1nbsf" path="res://textures/icons8-done-48.png" id="3_3608n"]
+[ext_resource type="Texture2D" uid="uid://bcj1cue0bb7ws" path="res://textures/icons8-close-48.png" id="4_qu8mv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hal1j"]
+bg_color = Color(0, 0, 0, 0.176471)
+
+[node name="TaskManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_256ql")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="ProjectName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 1220.0
+offset_bottom = 65.0
+theme = ExtResource("1_pxfcu")
+text = "Project Name:"
+vertical_alignment = 1
+
+[node name="TaskPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.092
+anchor_right = 0.953
+anchor_bottom = 0.786
+offset_left = -0.160004
+offset_top = -0.240005
+offset_right = 0.159912
+offset_bottom = 0.0800171
+mouse_filter = 2
+theme = ExtResource("1_pxfcu")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TaskPanel"]
+custom_minimum_size = Vector2(1150, 440)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -230.0
+offset_right = 575.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TaskPanel/ScrollContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TaskPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 25
+
+[node name="ButtonPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 582.0
+offset_right = 1220.0
+offset_bottom = 657.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hal1j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="AddTask" type="Button" parent="ButtonPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_pxfcu")
+theme_override_fonts/font = ExtResource("2_1d0aw")
+theme_override_font_sizes/font_size = 45
+text = "Add Task"
+icon = ExtResource("3_3608n")
+
+[node name="Exit" type="Button" parent="ButtonPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_pxfcu")
+theme_override_fonts/font = ExtResource("2_1d0aw")
+theme_override_font_sizes/font_size = 45
+text = "Exit"
+icon = ExtResource("4_qu8mv")
+
+[connection signal="pressed" from="ButtonPanel/HBoxContainer/AddTask" to="." method="_on_add_task_pressed"]
+[connection signal="pressed" from="ButtonPanel/HBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c7h8of5im5w1o"]
+
+[node name="ProjectHboxContainer" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+alignment = 1

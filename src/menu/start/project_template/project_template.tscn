@@ -1,0 +1,172 @@
+[gd_scene load_steps=10 format=3 uid="uid://opsmqgkf14a8"]
+
+[ext_resource type="Theme" uid="uid://dc3d7au27w1u5" path="res://theme/main_theme.tres" id="1_u8mf7"]
+[ext_resource type="Script" path="res://src/menu/start/project_template/project_template.gd" id="1_yiy27"]
+[ext_resource type="Texture2D" uid="uid://b67xsqskrmm45" path="res://textures/icons8-advertisement-page-48.png" id="3_jlx1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u28a0"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trlsp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eamns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7qf8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6od7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xffq"]
+
+[node name="ProjectTemplate" type="Panel"]
+custom_minimum_size = Vector2(1140, 95)
+anchors_preset = -1
+anchor_right = 0.891
+anchor_bottom = 0.132
+offset_right = -1100.48
+offset_bottom = -55.04
+size_flags_horizontal = 3
+mouse_filter = 2
+theme = ExtResource("1_u8mf7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u28a0")
+script = ExtResource("1_yiy27")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -570.0
+offset_top = 7.5
+offset_right = -25.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_u8mf7")
+
+[node name="Panel2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 7.5
+offset_right = 570.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_u8mf7")
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -570.0
+offset_top = 7.5
+offset_right = 570.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_u8mf7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1120, 88)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -44.0
+offset_right = 560.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Name" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_u8mf7")
+theme_override_font_sizes/font_size = 40
+text = "Name..."
+
+[node name="Tasks" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_u8mf7")
+theme_override_font_sizes/font_size = 40
+text = "Tasks: 0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Description" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_u8mf7")
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 25
+text = "Description..."
+
+[node name="Deadline" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_u8mf7")
+theme_override_colors/font_color = Color(0.593134, 0.593134, 0.593134, 1)
+theme_override_font_sizes/font_size = 25
+text = "Deadline..."
+
+[node name="ChooseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_trlsp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eamns")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_i7qf8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x6od7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4xffq")
+
+[node name="OpenButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_jlx1e")
+
+[connection signal="mouse_entered" from="ChooseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="ChooseButton" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="ChooseButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="OpenButton" to="." method="_on_open_button_pressed"]

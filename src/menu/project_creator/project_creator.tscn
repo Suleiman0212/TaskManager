@@ -1,0 +1,189 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfo3lkdhs02ds"]
+
+[ext_resource type="Script" path="res://src/menu/project_creator/project_creator.gd" id="1_040if"]
+[ext_resource type="Theme" uid="uid://dc3d7au27w1u5" path="res://theme/main_theme.tres" id="1_jj378"]
+[ext_resource type="FontFile" uid="uid://b83t7pojv8f5p" path="res://fonts/SUSE-Regular.ttf" id="2_pwmld"]
+[ext_resource type="Texture2D" uid="uid://d0h22imw1nbsf" path="res://textures/icons8-done-48.png" id="3_afm2u"]
+[ext_resource type="Texture2D" uid="uid://bcj1cue0bb7ws" path="res://textures/icons8-close-48.png" id="4_6d76l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yme5j"]
+bg_color = Color(0, 0, 0, 0.176471)
+
+[node name="ProjectCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_040if")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 1220.0
+offset_bottom = 65.0
+theme = ExtResource("1_jj378")
+text = "Add project:"
+vertical_alignment = 1
+
+[node name="ProjectsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.047
+anchor_top = 0.092
+anchor_right = 0.953
+anchor_bottom = 0.786
+offset_left = -0.160004
+offset_top = -0.240005
+offset_right = 0.159912
+offset_bottom = 0.0800171
+mouse_filter = 2
+theme = ExtResource("1_jj378")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ProjectsPanel"]
+custom_minimum_size = Vector2(1150, 440)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -230.0
+offset_right = 575.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProjectsPanel/ScrollContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ProjectsPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 25
+
+[node name="NameEditLbl" type="Label" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_jj378")
+theme_override_font_sizes/font_size = 40
+text = "Name:"
+
+[node name="NameEdit" type="LineEdit" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_jj378")
+placeholder_text = "Enter project name"
+max_length = 20
+
+[node name="NameEditDebug" type="Label" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_jj378")
+theme_override_font_sizes/font_size = 40
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ProjectsPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 25
+
+[node name="DescriptionEditLbl" type="Label" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_jj378")
+theme_override_font_sizes/font_size = 40
+text = "Description:"
+
+[node name="DescriptionEdit" type="LineEdit" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_jj378")
+placeholder_text = "Enter project description"
+
+[node name="Label" type="Label" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_jj378")
+theme_override_font_sizes/font_size = 40
+text = "- optional"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ProjectsPanel/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 25
+
+[node name="DeadlineEditLbl" type="Label" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("1_jj378")
+theme_override_font_sizes/font_size = 40
+text = "Deadline:"
+
+[node name="DeadlineEdit" type="LineEdit" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_jj378")
+placeholder_text = "Enter project deadline"
+max_length = 8
+
+[node name="Label" type="Label" parent="ProjectsPanel/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("1_jj378")
+theme_override_font_sizes/font_size = 40
+text = "- optional"
+
+[node name="ButtonPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 582.0
+offset_right = 1220.0
+offset_bottom = 657.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yme5j")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Exit" type="Button" parent="ButtonPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_jj378")
+theme_override_fonts/font = ExtResource("2_pwmld")
+theme_override_font_sizes/font_size = 45
+text = "Exit"
+icon = ExtResource("4_6d76l")
+
+[node name="Done" type="Button" parent="ButtonPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_jj378")
+theme_override_fonts/font = ExtResource("2_pwmld")
+theme_override_font_sizes/font_size = 45
+text = "Done"
+icon = ExtResource("3_afm2u")
+
+[connection signal="pressed" from="ButtonPanel/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ButtonPanel/HBoxContainer/Done" to="." method="_on_done_pressed"]
